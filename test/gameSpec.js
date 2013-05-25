@@ -14,6 +14,10 @@ describe("Ten-Ping Bowling Kata", function () {
         this.roll(5);
     }
 
+    function rollStrike() {
+        this.roll(10);
+    }
+
     beforeEach(function () {
         this.game = new Game();
     });
@@ -47,5 +51,16 @@ describe("Ten-Ping Bowling Kata", function () {
 
     });
 
+    describe("Score a game with only a strike", function () {
+
+        it("should score 20 given a strike followed by a two rolls hitting 2 & 3 pins", function () {
+            rollStrike.call(this.game);
+            this.game.roll(2);
+            this.game.roll(3);
+            rollMany.call(this.game, 17, 0);
+            expect(this.game.score()).toEqual(20);
+        });
+
+    });
 });
 

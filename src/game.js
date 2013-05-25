@@ -18,7 +18,9 @@ Game.prototype = {
             rollsToScore = this._rolls.length;
 
         for (i; i < rollsToScore; i++) {
-            if (this._isSpare(i)) {
+            if (this._isStrike(i)) {
+                score += 10 + this._rolls[i + 1] + this._rolls[i + 2];
+            } else if (this._isSpare(i)) {
                 score += 10 + this._rolls[i + 2];
                 i++;
             } else {
@@ -26,6 +28,10 @@ Game.prototype = {
             }
         }
         return score;
+    },
+
+    _isStrike: function (rollIdx) {
+        return (this._rolls[rollIdx] === 10);
     },
 
     _isSpare: function (rollIdx) {
