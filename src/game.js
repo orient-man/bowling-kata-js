@@ -7,6 +7,8 @@ Game.prototype = {
         if (typeof pins !== 'number') {
             throw new Error('Game.role() expects `pins` argument to be a number');
         }
+
+        this._score += pins;
     },
 
     score: function () {

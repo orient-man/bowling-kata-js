@@ -16,5 +16,19 @@ describe("Ten-Ping Bowling Kata", function () {
 
     });
 
+    describe("Score game given all rolls hit only one pin", function () {
+
+        it("should score 20", function () {
+            var game = new Game(), i = 0;
+
+            for (i; i < 20; i ++) {
+                game.roll(1);
+            }
+
+            expect(game.score()).toEqual(20);
+        });
+
+    });
+
 });
 
