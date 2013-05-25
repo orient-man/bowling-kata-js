@@ -62,5 +62,14 @@ describe("Ten-Ping Bowling Kata", function () {
         });
 
     });
+
+    describe("Score a perfect game of 300 points", function () {
+
+        it("should score 300 for 12 strikes in a row", function () {
+            rollMany.call(this.game, 12, 10);
+            expect(this.game.score()).toEqual(300);
+        });
+
+    });
 });
 

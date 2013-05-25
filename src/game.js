@@ -15,7 +15,8 @@ Game.prototype = {
 
     score: function () {
         var score = 0, i = 0,
-            rollsToScore = this._rolls.length;
+            tenthFrameRoll = this._bonusRoll(),
+            rollsToScore = tenthFrameRoll ? tenthFrameRoll + 1 : this._rolls.length;
 
         for (i; i < rollsToScore; i++) {
             if (this._isStrike(i)) {
@@ -28,6 +29,17 @@ Game.prototype = {
             }
         }
         return score;
+    },
+
+    _bonusRoll: function () {
+        var hasBonusRoll = false,
+        checkRoll = this._rolls.length - 3;
+
+        if (this._isStrike(checkRoll) || this._isSpare(checkRoll)) {
+            hasBonusRoll = true;
+        }
+
+        return hasBonusRoll ? checkRoll : null;
     },
 
     _isStrike: function (rollIdx) {
