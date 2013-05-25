@@ -38,7 +38,7 @@ describe("Ten-Ping Bowling Kata", function () {
 
     describe("Score a game with only a spare", function () {
 
-        xit("should score 20 given the first 3 rolls hit 5 pins", function () {
+        it("should score 20 given the first 3 rolls hit 5 pins", function () {
             rollSpare.call(this.game);
             this.game.roll(5);
             rollMany.call(this.game, 17, 0);
