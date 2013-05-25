@@ -71,5 +71,44 @@ describe("Ten-Ping Bowling Kata", function () {
         });
 
     });
+
+    describe("Game with all scoring variations including tenth frame", function () {
+
+        it("should score 110", function () {
+            var game = this.game;
+
+            // frame 1, score: 9
+            game.roll(7);
+            game.roll(2);
+            // frame 2, score: 16
+            game.roll(6);
+            game.roll(1);
+            // frame 3, score: 26 + 3 = 29
+            rollSpare.call(game);
+            // frame 4, score: 36
+            game.roll(3);
+            game.roll(4);
+            // frame 5, score: 46 + 10 = 56
+            rollSpare.call(game);
+            // frame 6, score: 66 + 5 + 3 = 74
+            rollStrike.call(game);
+            // frame 7, score: 82
+            game.roll(5);
+            game.roll(3);
+            // frame 8, score: 87
+            game.roll(5);
+            game.roll(0);
+            // frame 9, score: 95
+            game.roll(6);
+            game.roll(2);
+            // frame 10, score: 105 + 5 = 110
+            game.roll(7);
+            game.roll(3);
+            game.roll(5);
+            expect(this.game.score()).toEqual(110);
+        });
+
+    });
+
 });
 
